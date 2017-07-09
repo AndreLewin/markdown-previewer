@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+
 
 class Input extends React.Component {
     render() {
@@ -36,14 +40,23 @@ class Output extends React.Component {
 class App extends React.Component {
     render() {
         return (
-            <div>
+            <MuiThemeProvider>
                 <div>
-                    <Input />
+                    <RaisedButton label="default"/>
+                    <div>
+                        <TextField
+                            hintText="Input Field"
+                        />
+                        <Input />
+                    </div>
+                    <div>
+                        <TextField
+                            hintText="Output Field"
+                        />
+                        <Output />
+                    </div>
                 </div>
-                <div>
-                    <Output />
-                </div>
-            </div>
+            </MuiThemeProvider>
         );
     }
 }
