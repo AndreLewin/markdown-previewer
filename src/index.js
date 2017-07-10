@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-
+import Button from 'react-bootstrap/lib/Button';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
 
 class Input extends React.Component {
     render() {
@@ -40,23 +40,16 @@ class Output extends React.Component {
 class App extends React.Component {
     render() {
         return (
-            <MuiThemeProvider>
-                <div>
-                    <RaisedButton label="default"/>
-                    <div>
-                        <TextField
-                            hintText="Input Field"
-                        />
+            <Grid>
+                <Row>
+                    <Col xs={6} className="input">
                         <Input />
-                    </div>
-                    <div>
-                        <TextField
-                            hintText="Output Field"
-                        />
+                    </Col>
+                    <Col xs={6} className="output">
                         <Output />
-                    </div>
-                </div>
-            </MuiThemeProvider>
+                    </Col>
+                </Row>
+            </Grid>
         );
     }
 }
