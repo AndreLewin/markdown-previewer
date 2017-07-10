@@ -15,3 +15,7 @@ body {
 .output {
     background-color: grey;
 }
+
+.inputField {
+    resize: vertical;
+}
