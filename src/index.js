@@ -1,18 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
 import { Grid, Row, Col, FormGroup, FormControl } from 'react-bootstrap';
 
 class Input extends React.Component {
     render() {
         return (
-            <div>
-                <FormGroup>
-                    <label htmlFor="exampleInputEmail1">Markdown input:</label>
-                    <FormControl componentClass="textarea" id="exampleInputEmail1" className="inputField" placeholder="Write your markdown text here"/>
-                </FormGroup>
-            </div>
+            <FormGroup>
+                <label htmlFor="exampleInputEmail1">Markdown input:</label>
+                <FormControl componentClass="textarea" id="exampleInputEmail1" className="inputField" placeholder="Write your markdown text here"/>
+            </FormGroup>
         );
     }
 }
@@ -40,16 +37,19 @@ class Output extends React.Component {
 class App extends React.Component {
     render() {
         return (
-            <Grid>
-                <Row>
-                    <Col xs={6} className="input">
-                        <Input />
-                    </Col>
-                    <Col xs={6} className="output">
-                        <Output />
-                    </Col>
-                </Row>
-            </Grid>
+            <div>
+                <h1 className="title">Markdown previewer</h1>
+                <Grid>
+                    <Row className="rowFlex">
+                        <Col xs={6} className="well colFlex">
+                            <Input />
+                        </Col>
+                        <Col xs={6} className="well colFlex">
+                            <Output />
+                        </Col>
+                    </Row>
+                </Grid>
+            </div>
         );
     }
 }

@@ -16,6 +16,20 @@ body {
     background-color: grey;
 }
 
+.title {
+    text-align: center;
+}
+
+.rowFlex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.rowFlex > .colFlex {
+    display: flex;
+    flex-direction: column;
+}
+
 .inputField {
     resize: vertical;
 }
