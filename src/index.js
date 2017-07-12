@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import marked from 'marked';
+
 import './index.css';
 import { Grid, Row, Col, FormGroup, FormControl } from 'react-bootstrap';
 
@@ -8,26 +11,18 @@ class Input extends React.Component {
         return (
             <FormGroup>
                 <label htmlFor="exampleInputEmail1">Markdown input:</label>
-                <FormControl componentClass="textarea" id="exampleInputEmail1" className="inputField" placeholder="Write your markdown text here"/>
+                <FormControl onChange={this.props.onChange} componentClass="textarea" id="exampleInputEmail1" className="inputField" placeholder="Write your markdown text here"/>
             </FormGroup>
         );
     }
 }
 
 class Output extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            result: "This is the result",
-        };
-    }
-
-
     render() {
         return (
             <div>
                 <p>Preview:</p>
-                <p>{this.state.result}</p>
+                <p dangerouslySetInnerHTML={{__html:marked(this.props.markdown)}} />
             </div>
         );
     }
@@ -35,6 +30,19 @@ class Output extends React.Component {
 
 
 class App extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            markdown: "I am using __markdown__.",
+        };
+    }
+
+    handleChange(event) {
+        console.log(event.target.value);
+        this.setState({markdown: event.target.value});
+    }
+
+
     render() {
         return (
             <div>
@@ -42,10 +50,10 @@ class App extends React.Component {
                 <Grid>
                     <Row className="rowFlex">
                         <Col xs={6} className="well colFlex">
-                            <Input />
+                            <Input onChange={(event) => this.handleChange(event)}/>
                         </Col>
                         <Col xs={6} className="well colFlex">
-                            <Output />
+                            <Output markdown={this.state.markdown} />
                         </Col>
                     </Row>
                 </Grid>
