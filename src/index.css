@@ -32,4 +32,6 @@ body {
 
 .inputField {
     resize: vertical;
+    height: 50px;
 }
+

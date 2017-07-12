@@ -2,16 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import marked from 'marked';
+import autosize from 'autosize';
 
 import './index.css';
 import { Grid, Row, Col, FormGroup, FormControl } from 'react-bootstrap';
 
 class Input extends React.Component {
+    componentDidMount(){
+        const textArea = document.getElementById('markdownInputTextArea');
+        autosize(textArea);
+    }
+
     render() {
         return (
             <FormGroup>
-                <label htmlFor="exampleInputEmail1">Markdown input:</label>
-                <FormControl onChange={this.props.onChange} componentClass="textarea" id="exampleInputEmail1" className="inputField" placeholder="Write your markdown text here"/>
+                <label htmlFor="markdownInputTextArea">Markdown input:</label>
+                <FormControl onChange={this.props.onChange} componentClass="textarea" id="markdownInputTextArea" className="inputField" placeholder="Write your markdown text here"/>
             </FormGroup>
         );
     }
@@ -38,7 +44,6 @@ class App extends React.Component {
     }
 
     handleChange(event) {
-        console.log(event.target.value);
         this.setState({markdown: event.target.value});
     }
 
